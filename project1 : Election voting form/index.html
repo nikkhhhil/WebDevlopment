@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VOTTER</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        
+        header {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px 0;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .logo img {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .election-name {
+            font-size: 24px;
+        }
+        
+        .contact_form {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        
+        h1 {
+            color: #007BFF;
+        }
+        
+        .candidate {
+            margin: 20px;
+        }
+        
+        img {
+            max-width: 150px;
+            border-radius: 50%;
+            border: 2px solid #007BFF;
+        }
+        
+        label {
+            display: block;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+        
+        input[type="radio"] {
+            display: none;
+        }
+        
+        input[type="radio"] + label::before {
+            content: '\2713';
+            display: inline-block;
+            font-size: 20px;
+            width: 25px;
+            text-align: center;
+            color: transparent;
+            background: #fff;
+            border: 2px solid #007BFF;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        
+        input[type="radio"]:checked + label::before {
+            background: #007BFF;
+            color: #fff;
+        }
+        
+        button {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: #0056b3;
+        }
+        label {
+            display: block;
+            margin: 10px 0;
+            font-weight: bold;
+            text-align: center;
+            cursor: pointer; /* Add pointer cursor for labels */
+        }
+        
+        input[type="radio"] {
+            display: none;
+        }
+        
+        /* Style the label when radio input is checked */
+        input[type="radio"]:checked + label {
+            border: 2px solid #007BFF;
+            background-color: #f0f0f0;
+        }
+        
+        /* ... (previous CSS styles) */
+
+        /* Style the label when radio input is checked */
+        input[type="radio"]:checked + label {
+        border: 2px solid #007BFF;
+        background-color: #f0f0f0;
+        }
+
+        /* Style the candidate container when the label is hovered or clicked */
+        label:hover {
+        background-color: #f0f0f0;
+        cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+<section>
+    <!DOCTYPE html>
+<html>
+<head>
+  <title>General Election Voting Form</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">
+        <img src="college_logo.png" alt="College Logo">
+      </div>
+      <div class="election-name">
+        GENERAL ELECTION
+      </div>
+    </nav>
+  </header>
+
+  <div class="contact_form">
+    <h1>Vote for Your Favorite Candidate</h1>
+    <form name="contact_main_form" method="post" action="https://script.google.com/macros/s/AKfycbwLy3TJQPPvjNZEmq-Pj-isCr4kMgbNzYtYNmOZa-fgNBX3TKtv-m0sPnB3-zZSD64dlA/exec">
+      <div class="candidate">
+        <input type="radio" value="Candidate1" name="Criteria" id="101">
+        <label for="101">
+          <img src="candidate.png" alt="Candidate 1">
+          <p>Candidate1</p>
+        </label>
+      </div>
+      <div class="candidate">
+        <input type="radio" value="Candidate2" name="Criteria" id="102">
+        <label for="102">
+          <img src="candidate.png" alt="Candidate 2">
+          <p>Candidate2</p>
+        </label>
+      </div>
+      <div class="candidate">
+        <input type="radio" value="Candidate3" name="Criteria" id="103">
+        <label for="103">
+          <img src="candidate.png" alt="Candidate 3">
+          <p>Candidate3</p>
+        </label>
+      </div>
+      <div class="candidate">
+        <input type="radio" value="NOTA" name="Criteria" id="104">
+        <label for="104">
+          <img src="candidate.png" alt="Candidate 3">
+          <p>NOTA</p>
+        </label>
+      </div>
+      <input type="submit" name="submit" value="Submit" class="send" id="submit-button">
+    </form>
+  </div>
+</section>
+</body>
+<script>
+    // Form
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwLy3TJQPPvjNZEmq-Pj-isCr4kMgbNzYtYNmOZa-fgNBX3TKtv-m0sPnB3-zZSD64dlA/exec';
+    const form = document.forms['contact_main_form'];
+    const submitButton = document.getElementById('submit-button');
+
+    form.addEventListener('submit', e => {
+        e.preventDefault();
+
+        submitButton.style.background = 'var(--bg-color)';
+        submitButton.style.border = '2px solid var(--main-color)';
+        submitButton.disabled = true;
+        submitButton.value = 'In Process...';
+
+        fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+            .then(response => {
+                if (response.ok) {
+                    submitButton.value = 'Submitted';
+                    alert("Thank you! Your form is submitted successfully.");
+                    form.reset();
+                } else {
+                    submitButton.value = 'Not Submitted';
+                    alert("Oops! There was a problem submitting your form.");
+                }
+            })
+            .catch(error => {
+                submitButton.value = 'Not Submitted';
+                console.error('Error!', error.message);
+            })
+            .finally(() => {
+                submitButton.style.background = 'var(--main-color)';
+                submitButton.style.border = '2px solid var(--main-color)';
+                submitButton.disabled = false;
+                submitButton.value = 'Submit';
+            });
+    });
+</script>
+</html>
