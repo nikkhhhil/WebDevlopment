@@ -88,7 +88,7 @@
             color: #fff;
         }
         
-        button {
+        #submit-button {
             background-color: #007BFF;
             color: #fff;
             padding: 10px 20px;
@@ -98,7 +98,7 @@
             transition: background-color 0.3s;
         }
         
-        button:hover {
+        #submit-button:hover {
             background-color: #0056b3;
         }
         label {
@@ -199,9 +199,6 @@
 
     form.addEventListener('submit', e => {
         e.preventDefault();
-
-        submitButton.style.background = 'var(--bg-color)';
-        submitButton.style.border = '2px solid var(--main-color)';
         submitButton.disabled = true;
         submitButton.value = 'In Process...';
 
@@ -221,8 +218,6 @@
                 console.error('Error!', error.message);
             })
             .finally(() => {
-                submitButton.style.background = 'var(--main-color)';
-                submitButton.style.border = '2px solid var(--main-color)';
                 submitButton.disabled = false;
                 submitButton.value = 'Submit';
             });
